@@ -15,10 +15,10 @@ function ExamplesSection() {
     <section id="examples">
       <h2>Examples</h2>
       <menu>
-        <TabButton onClick={() => handleClick('components')}>Component</TabButton>
-        <TabButton onClick={() => handleClick('jsx')}>JSX</TabButton>
-        <TabButton onClick={() => handleClick('props')}>Props</TabButton>
-        <TabButton onClick={() => handleClick('state')}>State</TabButton>
+        <TabButton isActive={tabLabel === 'components'} onClick={() => handleClick('components')}>Component</TabButton>
+        <TabButton isActive={tabLabel === 'jsx'}  onClick={() => handleClick('jsx')}>JSX</TabButton>
+        <TabButton isActive={tabLabel === 'props'}  onClick={() => handleClick('props')}>Props</TabButton>
+        <TabButton isActive={tabLabel === 'state'}  onClick={() => handleClick('state')}>State</TabButton>
       </menu>
       <Example {...EXAMPLES[tabLabel]} />
     </section>

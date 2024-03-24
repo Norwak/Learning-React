@@ -1,6 +1,7 @@
 import './TabButton.css';
 
-export default function TabButton({children, className, onClick}) {
+export default function TabButton({children, isActive, onClick}) {
+  const className = (isActive) ? 'active' : '';
 
   return (
     <li>
