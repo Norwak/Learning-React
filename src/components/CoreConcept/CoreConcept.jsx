@@ -1,4 +1,6 @@
-function CoreConceptListItem({image, title, description}) {
+import './CoreConcept.css';
+
+function CoreConcept({image, title, description}) {
   return (
     <li>
       <img src={image} alt={title} />
@@ -8,4 +10,4 @@ function CoreConceptListItem({image, title, description}) {
   );
 }
 
-export default CoreConceptListItem;
+export default CoreConcept;

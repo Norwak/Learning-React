@@ -1,12 +1,14 @@
 import Header from "./common/Header";
-import CoreConceptList from "./components/CoreConcept/CoreConceptList";
+import CoreConceptsSection from "./sections/CoreConcepts/CoreConceptsSection";
+import ExamplesSection from "./sections/Examples/ExamplesSection";
 
 function App() {
   return (
     <div>
       <Header />
       <main>
-        <CoreConceptList />
+        <CoreConceptsSection />
+        <ExamplesSection />
         <h2>Time to get started!</h2>
       </main>
     </div>
