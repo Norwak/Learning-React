@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Player({name, symbol, activePlayer}) {
+export default function Player({name, symbol, activePlayer, changeNameEvent}) {
   const [modeName, newMode] = useState('display');
   const [playerName, newPlayerName] = useState(name);
 
@@ -9,6 +9,7 @@ export default function Player({name, symbol, activePlayer}) {
       newMode('edit');
     } else {
       newMode('display');
+      changeNameEvent(symbol, playerName);
     }
   }
 
