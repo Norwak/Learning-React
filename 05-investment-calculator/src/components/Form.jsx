@@ -1,7 +1,27 @@
 export default function Form({data, changedEvent}) {
   function handleInput(e) {
     const id = e.target.id;
-    data[id] = parseFloat(e.target.value);
+    let value = e.target.value;
+    if (value === '' || value[0] === '-') {
+      value = 0;
+    }
+
+    switch (id) {
+      case 'initial':
+        if (value >= 1000000) value = 999999;
+        break;
+      case 'annual':
+        if (value >= 1000000) value = 999999;
+        break;
+      case 'expected':
+        if (value > 100) value = 100;
+        break;
+      case 'years':
+        if (value > 50) value = 50;
+        break;
+    }
+
+    data[id] = parseFloat(value);
     changedEvent(data);
   }
 
