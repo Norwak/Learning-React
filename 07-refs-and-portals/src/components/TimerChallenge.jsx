@@ -1,0 +1,40 @@
+import { useRef, useState } from "react";
+
+
+export default function TimerChallenge({title, targetTime }) {
+  const timer = useRef();
+
+  const [timerStarted, setTimerStarted] = useState(false);
+  const [timerExpired, setTimerExpired] = useState(false);
+
+
+  function startTimer() {
+    setTimerStarted(true);
+    
+    timer.current = setTimeout(() => {
+      setTimerExpired(true);
+    }, targetTime * 1000);
+  }
+
+  function stopTimer() {
+    clearTimeout(timer.current);
+  }
+
+  return (
+    <li className="challenge">
+      <h2>{title}</h2>
+      {timerExpired && <p>You lost!</p>}
+      <p className="challenge-time">
+        {targetTime} second{targetTime > 1 ? 's' : ''}
+      </p>
+      <p>
+        <button onClick={timerStarted ? stopTimer : startTimer}>
+          {timerStarted ? 'Stop' : 'Start'} Challenge
+        </button>
+      </p>
+      <p className={timerStarted ? 'active' : ''}>
+        {timerStarted ? 'Time is running...' : 'Timer inactive'}
+      </p>
+    </li>
+  );
+}
