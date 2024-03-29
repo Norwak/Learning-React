@@ -1,0 +1,171 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+.main-body {
+  display: flex;
+  padding-top: 50px;
+}
+
+
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+
+
+.sidebar {
+  width: 400px;
+  min-height: 800px;
+  padding: 100px 50px;
+  border-radius: 0 25px 0 0;
+  color: #fff;
+  background-color: #000;
+}
+
+.sidebar__title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.sidebar__add {
+  margin-top: 50px;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: #444;
+  color: darkgray
+}
+
+.sidebar__add:hover {
+  color: #fff
+}
+
+.sidebar__list {
+  margin-top: 50px;
+  list-style: none;
+}
+
+
+
+.project-item {
+  margin-top: 10px;
+}
+
+.project-item__button {
+  width: 100%;
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 1.125rem;
+  background-color: transparent;
+  color: darkgray;
+}
+
+.project-item__button.active,
+.project-item__button:hover {
+  background-color: #222;
+  color: white;
+}
+
+
+
+main {
+  width: 600px;
+  padding: 100px 50px;
+}
+
+
+
+.edit-project__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: -7.5px;
+  margin-right: -7.5px;
+  list-style: none;
+}
+
+.edit-project__action {
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+}
+
+.edit-project__button {
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 1.125rem;
+  background-color: #000;
+  color: #fff;
+}
+
+.edit-project__button:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+.edit-project__button--transparent {
+  background-color: transparent;
+  color: #000;
+}
+
+.edit-project__button--transparent:hover {
+  text-decoration: underline;
+  background-color: transparent;
+  color: #000;
+}
+
+.edit-project__form {
+  margin-top: 30px;
+}
+
+
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.input-group label {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #444;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  margin-top: 3px;
+  padding: 10px;
+  border: none;
+  border-bottom: 2px solid #bbb;
+  background-color: #ddd;
+  color: #000;
+}
+
+.input-group textarea {
+  resize: vertical;
+  height: 100px
+}
+
+.input-group input:focus-within,
+.input-group textarea:focus-within {
+  border-bottom-color: #999;
+}
