@@ -13,17 +13,22 @@ function App() {
 
   projects = structuredClone(projects);
 
-  function changeMode(newMode, projectId) {
-    mode = newMode;
-    newActiveTaskId(projectId);
-    console.log(projectId);
+  function changeMode(newMode, projectId = 0) {
+    if (newMode !== 'new') {
+      mode = newMode;
+      newActiveTaskId(projectId);
+    } else {
+      const newProjectId = projects.map(project => project.id).reduce((res, id) => id > res ? id : res) + 1;
+      mode = 'edit';
+      newActiveTaskId(newProjectId);
+    }
   }
 
   return (
     <div className="main-body">
-      <Sidebar projects={projects} activeTaskId={activeTaskId} changeModeEvent={changeMode}/>
+      <Sidebar projects={projects} activeTaskId={activeTaskId} changeModeEvent={changeMode} />
 
-      <Main mode={mode} />
+      <Main mode={mode} changeModeEvent={changeMode} />
     </div>
   );
 }
