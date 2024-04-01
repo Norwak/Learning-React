@@ -1,12 +1,8 @@
-export default function ProjectItem() {
+export default function ProjectItem({project, active}) {
+  const classList = active ? 'project-item__button active' : 'project-item__button';
   return (
-    <>
     <li className="project-item">
-      <button className="project-item__button active" type="button">Learning React</button>
+      <button className={classList} type="button" data-id={project.id}>{project.title}</button>
     </li>
-    <li className="project-item">
-      <button className="project-item__button" type="button">Mastering React</button>
-    </li>
-    </>
   );
 }
