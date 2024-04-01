@@ -92,7 +92,7 @@ main {
 
 
 
-.edit-project__actions {
+.actions {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -101,12 +101,12 @@ main {
   list-style: none;
 }
 
-.edit-project__action {
+.actions__item {
   padding-left: 7.5px;
   padding-right: 7.5px;
 }
 
-.edit-project__button {
+.actions__button {
   padding: 15px;
   border-radius: 5px;
   font-size: 1.125rem;
@@ -114,21 +114,27 @@ main {
   color: #fff;
 }
 
-.edit-project__button:hover {
+.actions__button:hover {
   background-color: #444;
   color: #fff;
 }
 
-.edit-project__button--transparent {
+.actions__button--transparent {
   background-color: transparent;
   color: #000;
 }
 
-.edit-project__button--transparent:hover {
+.actions__button--transparent:hover {
   text-decoration: underline;
   background-color: transparent;
   color: #000;
 }
+
+.actions__button--delete:hover {
+  color: red;
+}
+
+
 
 .edit-project__form {
   margin-top: 30px;
@@ -168,4 +174,137 @@ main {
 .input-group input:focus-within,
 .input-group textarea:focus-within {
   border-bottom-color: #999;
+}
+
+
+
+.no-project {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-project__logo {
+  width: 100px;
+  height: auto;
+}
+
+.no-project__title {
+  margin-top: 25px;
+  font-size: 1.75rem;
+}
+
+.no-project__description {
+  margin-top: 25px;
+  font-size: 1.25rem;
+}
+
+.no-project__new {
+  margin-top: 50px;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  background-color: #222;
+  color: darkgray;
+}
+
+.no-project__new:hover {
+  color: #fff
+}
+
+
+
+.view-project__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.view-project__title {
+  font-size: 2.75rem;
+}
+
+.view-project__date {
+  margin-top: 10px;
+  font-size: 1.25rem;
+  opacity: 0.65;
+}
+
+.view-project__body {
+  margin-top: 25px;
+}
+
+
+
+.separator {
+  display: block;
+  margin-top: 15px;
+  border: none;
+  width: 100%;
+  height: 2px;
+  background-color: #444;
+}
+
+
+
+.tasks__title {
+  font-size: 2rem;
+  margin-top: 30px;
+}
+
+.tasks__form .input-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.tasks .input-group input {
+  flex-grow: 0;
+  width: 250px;
+}
+
+.tasks__submit {
+  height: 37px;
+  padding-left: 25px;
+  padding-right: 15px;
+  font-size: 1.125rem;
+  background-color: transparent;
+  color: #444;
+  white-space: nowrap;
+}
+
+.tasks__submit:hover {
+  color: #000;
+}
+
+.tasks__none {
+  margin-top: 25px;
+}
+
+.tasks__list {
+  margin-top: 25px;
+  padding: 35px 25px 50px;
+  border-radius: 10px;
+  list-style: none;
+  background-color: #eee;
+}
+
+
+
+.task {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task__delete {
+  padding: 5px 5px 5px 25px;
+  font-size: 0.875rem;
+  color: #222;
+}
+
+.task__delete:hover {
+  color: red;
 }
