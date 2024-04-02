@@ -224,6 +224,10 @@ main {
   font-size: 2.75rem;
 }
 
+.view-project__body {
+  white-space: pre-wrap;
+}
+
 .view-project__date {
   margin-top: 10px;
   font-size: 1.25rem;

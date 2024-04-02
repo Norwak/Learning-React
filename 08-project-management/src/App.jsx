@@ -6,14 +6,19 @@ let mode = 'no';
 
 function App() {
   let [projects, newProjects] = useState([
-    {id: 1, title: 'Learning React', date: 'Nov 14, 2023', content: '<p>Learn react from the ground up.</p><p>&nbsp;</p><p>Start with the basics, finish with advanced knowledge.</p>'},
+    {id: 1, title: 'Learning React', date: 'Nov 14, 2023', content: `Learn react from the ground up.
+    
+Start with the basics, finish with advanced knowledge.`},
     {id: 2, title: 'Mastering React', date: 'Dec 29, 2024', content: '<p>Mastering react by constantly honing your skills.</p>'}
   ]);
   const [activeProjectId, newActiveProjectId] = useState(0);
 
   projects = structuredClone(projects);
 
-  const newProjectId = projects.map(project => project.id).reduce((res, id) => id > res ? id : res) + 1;
+  const newProjectId = 1;
+  if (projects.length) {
+    const newProjectId = projects.map(project => project.id).reduce((res, id) => id > res ? id : res) + 1;
+  }
 
   function changeMode(newMode, projectId = 0) {
     if (newMode !== 'new') {
@@ -30,18 +35,19 @@ function App() {
       ...prevProjects,
       {id: newProjectId, title, date, content}
     ]);
-    changeMode('edit', newProjectId);
+    changeMode('view', newProjectId);
   }
 
   function removeProject(id) {
     newProjects((prevProjects) => prevProjects.filter(project => project.id !== id));
+    changeMode('no');
   }
 
   return (
     <div className="main-body">
       <Sidebar projects={projects} activeProjectId={activeProjectId} changeModeEvent={changeMode} />
 
-      <Main mode={mode} changeModeEvent={changeMode} appendProjectEvent={appendProject} removeProjectEvent={removeProject} />
+      <Main mode={mode} project={projects.find(project => project.id === activeProjectId)} changeModeEvent={changeMode} appendProjectEvent={appendProject} removeProjectEvent={removeProject} />
     </div>
   );
 }

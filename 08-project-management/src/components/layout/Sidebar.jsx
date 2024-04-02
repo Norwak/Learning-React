@@ -1,6 +1,6 @@
 import ProjectItem from "../ProjectItem";
 
-export default function Sidebar({projects, activeProjectId, changeModeEvent}) {
+export default function Sidebar({projects, activeProjectId, changeModeEvent}) {  
   return (
     <aside className="sidebar">
       <h2 className="sidebar__title">Your projects</h2>
