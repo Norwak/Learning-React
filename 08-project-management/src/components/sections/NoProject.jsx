@@ -1,7 +1,7 @@
 export default function NoProject({changeModeEvent}) {
   return (
     <section className="no-project" id="no-project">
-      <img src="/public/logo.png" alt="Logo" className="no-project__logo" />
+      <img src="/logo.png" alt="Logo" className="no-project__logo" />
 
       <h1 className="no-project__title">No Project Selected</h1>
 
