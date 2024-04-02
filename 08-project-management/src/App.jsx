@@ -15,10 +15,12 @@ Start with the basics, finish with advanced knowledge.`},
 
   projects = structuredClone(projects);
 
-  const newProjectId = 1;
+  let newProjectId = 1;
   if (projects.length) {
-    const newProjectId = projects.map(project => project.id).reduce((res, id) => id > res ? id : res) + 1;
+    newProjectId = projects.map(project => project.id).reduce((res, id) => id > res ? id : res) + 1;
   }
+
+
 
   function changeMode(newMode, projectId = 0) {
     if (newMode !== 'new') {
@@ -42,6 +44,8 @@ Start with the basics, finish with advanced knowledge.`},
     newProjects((prevProjects) => prevProjects.filter(project => project.id !== id));
     changeMode('no');
   }
+
+
 
   return (
     <div className="main-body">

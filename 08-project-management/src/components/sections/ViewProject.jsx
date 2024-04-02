@@ -21,7 +21,7 @@ export default function ViewProject({project, removeProjectEvent}) {
 
       <hr className="separator" />
 
-      <Tasks />
+      <Tasks projectId={project.id} />
     </section>
   );
 }

@@ -1,18 +1,8 @@
-export default function Task() {
+export default function Task({task, removeTaskEvent}) {
   return (
-    <>
     <li className="task">
-      <div className="task__title">Learn the basics</div>
-      <button type="button" className="task__delete">Delete</button>
+      <div className="task__title">{task.title}</div>
+      <button type="button" className="task__delete" onClick={() => removeTaskEvent(task.id)}>Delete</button>
     </li>
-    <li className="task">
-      <div className="task__title">Learn the basics</div>
-      <button type="button" className="task__delete">Delete</button>
-    </li>
-    <li className="task">
-      <div className="task__title">Learn the basics Learn the basics Learn the basics Learn the basics Learn the basics </div>
-      <button type="button" className="task__delete">Delete</button>
-    </li>
-    </>
   );
 }
