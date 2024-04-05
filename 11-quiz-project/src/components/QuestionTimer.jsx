@@ -13,8 +13,8 @@ export default function QuestionTimer({time, onTimeout}) {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setRemainingTime(prevTime => prevTime - 100);
-    }, 100);
+      setRemainingTime(prevTime => prevTime - 1000/60);
+    }, 1000/60);
 
     return () => {
       clearInterval(interval);
