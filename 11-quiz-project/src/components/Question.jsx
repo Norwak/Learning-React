@@ -9,6 +9,14 @@ export default function Question({index, onSelectEvent, onSkipEvent}) {
     isCorrect: '',
   });
 
+  let time = 3000;
+  if (answer.selectedAnswer) {
+    time = 1000;
+  }
+  if (answer.isCorrect !== '') {
+    time = 2000;
+  }
+
   function selectAnswer(answer) {
     setAnswer({
       selectedAnswer: answer,
@@ -36,7 +44,11 @@ export default function Question({index, onSelectEvent, onSkipEvent}) {
 
   return (
     <div id="question">
-      <QuestionTimer time={5000} onTimeout={onSkipEvent} />
+      <QuestionTimer key={time}
+        time={time}
+        onTimeout={answer.selectedAnswer === '' ? onSkipEvent : null}
+        mode={answerState}
+      />
       <h2>{questions[index].text}</h2>
       <Answers
         answers={questions[index].answers}

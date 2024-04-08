@@ -32,8 +32,6 @@ export default function Quiz() {
 
 
 
-  const currentQuestion = questions[activeQuestionIndex];
-
   return (
     <div id="quiz">
       <Question key={activeQuestionIndex}

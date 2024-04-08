@@ -16,7 +16,7 @@ export default function Answers({answers, selectedAnswer, answerState, onSelectE
         if (answerState === 'answered' && isSelectedAnswer) {
           cssClasses = 'selected';
         }
-        if ((answerState === 'corrent' || answerState === 'wrong') && isSelectedAnswer) {
+        if ((answerState === 'correct' || answerState === 'wrong') && isSelectedAnswer) {
           cssClasses = answerState;
         }
 
