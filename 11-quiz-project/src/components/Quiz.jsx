@@ -4,33 +4,18 @@ import quizCompleteImg from '../assets/quiz-complete.png';
 import Question from "./Question";
 
 export default function Quiz() {
-  const [answerState, setAnswerState] = useState('');
   let [userAnswers, setUserAnswers] = useState([]);
 
-  const activeQuestionIndex = answerState === '' ? userAnswers.length : userAnswers.length - 1;
+  const activeQuestionIndex = userAnswers.length;
   const isQuizOver = activeQuestionIndex === questions.length;
 
 
 
   const selectAnswer = useCallback(function selectAnswer(answer) {
-    setAnswerState('answered');
-
     userAnswers = structuredClone(userAnswers);
     userAnswers.push(answer);
     setUserAnswers(userAnswers);
-
-    setTimeout(() => {
-      if (answer === questions[activeQuestionIndex].answers[0]) {
-        setAnswerState('correct');
-      } else {
-        setAnswerState('wrong');
-      }
-
-      setTimeout(() => {
-        setAnswerState('');
-      }, 2000);
-    }, 1000);
-  }, [activeQuestionIndex]);
+  }, []);
 
   const skipAnswer = useCallback(() => selectAnswer(''), [selectAnswer]);
 
@@ -52,11 +37,8 @@ export default function Quiz() {
   return (
     <div id="quiz">
       <Question key={activeQuestionIndex}
-        questionText={currentQuestion.text}
-        answers={currentQuestion.answers}
+        index={activeQuestionIndex}
         onSelectEvent={selectAnswer}
-        selectedAnswer={userAnswers[userAnswers.length - 1]}
-        answerState={answerState}
         onSkipEvent={skipAnswer}
       />
     </div>
