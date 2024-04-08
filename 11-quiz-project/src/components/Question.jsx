@@ -9,7 +9,7 @@ export default function Question({index, onSelectEvent, onSkipEvent}) {
     isCorrect: '',
   });
 
-  let time = 3000;
+  let time = 250;
   if (answer.selectedAnswer) {
     time = 1000;
   }
