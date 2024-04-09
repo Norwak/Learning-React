@@ -20,6 +20,7 @@ function App() {
       <main>
         <ConfigureCounter setCountEvent={setCount} />
         <Counter initialCount={chosenCount} />
+        <Counter initialCount={0} />
       </main>
     </>
   );
