@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { fetchUserPlaces } from "../http";
 
 export function useFetch(fetchFn, initialValue) {
   const [isFetching, setIsFetching] = useState(false);
