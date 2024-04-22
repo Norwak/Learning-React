@@ -1,56 +1,35 @@
-import { useState } from "react";
 import Input from "./Input";
 import { hasMinLength, isEmail, isNotEmpty } from "../util/validation";
+import { useInput } from "../hooks/useInput";
 
 export default function Login() {
-  let [enteredValues, setEnteredValues] = useState({
-    email: '',
-    password: '',
-  });
-  let [didEdit, setDidEdit] = useState({
-    email: false,
-    password: false,
-  });
+  const {
+    value: emailValue, error: emailError,
+    changeInput: changeEmail, inputBlurred: emailBlurred, resetInput: resetEmail,
+  } = useInput('', value => isEmail(value) && isNotEmpty(value));
 
-  const emailIsInvalid = didEdit.email && !isEmail(enteredValues.email) && !isNotEmpty(enteredValues.email);
-  const passwordIsInvalid = didEdit.password && hasMinLength(enteredValues.password, 6);
+  const {
+    value: passwordValue, error: passwordError,
+    changeInput: changePassword, inputBlurred: passwordBlurred, resetInput: resetPassword,
+  } = useInput('', value => hasMinLength(value, 6));
 
 
 
   function submitForm(e) {
     e.preventDefault();
 
-    console.log(enteredValues.email, enteredValues.password);
+    if (emailError || passwordError) {
+      return;
+    }
 
-    // reset
-    setEnteredValues({
-      email: '',
-      password: '',
-    });
+    console.log(emailValue, passwordValue);
 
-    setDidEdit({
-      email: false,
-      password: false,
-    });
+    resetForm();
   }
 
-  function changeInput(identifier, e) {
-    setEnteredValues(prevValues => ({
-      ...prevValues,
-      [identifier]: e.target.value,
-    }));
-
-    setDidEdit(prevEdit => ({
-      ...prevEdit,
-      [identifier]: false,
-    }));
-  }
-
-  function inputBlur(identifier) {
-    setDidEdit(prevEdit => ({
-      ...prevEdit,
-      [identifier]: true,
-    }));
+  function resetForm() {
+    resetEmail();
+    resetPassword();
   }
 
 
@@ -61,22 +40,22 @@ export default function Login() {
 
       <div className="control-row">
         <Input 
-          label="Email" id="email" type="email" name="email" value={enteredValues.email}
-          onBlur={() => inputBlur('email')}
-          onChange={(e) => changeInput('email', e)}
-          error={emailIsInvalid && "Please enter a valid email address!"}
+          label="Email" id="email" type="email" name="email" value={emailValue}
+          onBlur={emailBlurred}
+          onChange={changeEmail}
+          error={emailError && "Please enter a valid email address!"}
         />
 
         <Input 
-          label="Password" id="password" type="password" name="password" value={enteredValues.password}
-          onBlur={() => inputBlur('password')}
-          onChange={(e) => changeInput('password', e)}
-          error={passwordIsInvalid && "Please enter a valid password!"}
+          label="Password" id="password" type="password" name="password" value={passwordValue}
+          onBlur={passwordBlurred}
+          onChange={changePassword}
+          error={passwordError && "Please enter a valid password!"}
         />
       </div>
 
       <p className="form-actions">
-        <button type="reset" className="button button-flat">Reset</button>
+        <button type="button" className="button button-flat" onClick={resetForm}>Reset</button>
         <button type="submit" className="button">Login</button>
       </p>
     </form>
