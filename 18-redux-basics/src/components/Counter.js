@@ -51,6 +51,7 @@ import { Component } from 'react';
 
 const Counter = () => {
   const counter = useSelector(state => state.counter);
+  const show = useSelector(state => state.showCounter);
   const dispatch = useDispatch();
 
   function increment() {
@@ -61,14 +62,21 @@ const Counter = () => {
     dispatch({type: 'decrement'});
   }
 
-  const toggleCounter = () => {};
+  function increase() {
+    dispatch({type: 'increase', amount: 5});
+  }
+
+  const toggleCounter = () => {
+    dispatch({type: 'toggle'});
+  };
 
   return (
     <main className={classes.counter}>
       <h1>Redux Counter</h1>
-      <div className={classes.value}>{counter}</div>
+      {show && <div className={classes.value}>{counter}</div>}
       <div>
         <button onClick={increment}>Increment</button>
+        <button onClick={increase}>Increate by 5</button>
         <button onClick={decrement}>Decrement</button>
       </div>
       <button onClick={toggleCounter}>Toggle Counter</button>
