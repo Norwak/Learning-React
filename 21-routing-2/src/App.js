@@ -6,7 +6,8 @@ import EventsPage from "./pages/EventsPage";
 import EventDetail from "./pages/EventDetail";
 import NewEvent from "./pages/NewEvent";
 import EditEvent from "./pages/EditEvent";
-import RootLayout from "./RootLayout";
+import RootLayout from "./layouts/RootLayout";
+import RootEventLayout from "./layouts/RootEventLayout";
 
 // 1. Add five new (dummy) page components (content can be simple <h1> elements)
 //    - HomePage
@@ -34,10 +35,16 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {index: true, element: <Homepage />},
-      {path: 'events', element: <EventsPage />},
-      {path: 'events/:id', element: <EventDetail />},
-      {path: 'events/new', element: <NewEvent />},
-      {path: 'events/:id/edit', element: <EditEvent />},
+      {
+        path: 'events/',
+        element: <RootEventLayout />,
+        children: [
+          {index: true, element: <EventsPage />},
+          {path: ':id', element: <EventDetail />},
+          {path: 'new', element: <NewEvent />},
+          {path: ':id/edit', element: <EditEvent />},
+        ],
+      },
     ],
   },
 ]);
