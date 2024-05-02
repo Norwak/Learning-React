@@ -6,6 +6,7 @@ import EventsPage from "./pages/EventsPage";
 import EventDetail from "./pages/EventDetail";
 import NewEvent from "./pages/NewEvent";
 import EditEvent from "./pages/EditEvent";
+import RootLayout from "./RootLayout";
 
 // 1. Add five new (dummy) page components (content can be simple <h1> elements)
 //    - HomePage
@@ -28,11 +29,17 @@ import EditEvent from "./pages/EditEvent";
 // BONUS: Add another (nested) layout route that adds the <EventNavigation> component above all /events... page components
 
 const router = createBrowserRouter([
-  {path: '/', element: <Homepage />},
-  {path: '/events', element: <EventsPage />},
-  {path: '/events/:id', element: <EventDetail />},
-  {path: '/events/new', element: <NewEvent />},
-  {path: '/events/:id/edit', element: <EditEvent />},
+  {
+    path: '/',
+    element: <RootLayout />,
+    children: [
+      {index: true, element: <Homepage />},
+      {path: 'events', element: <EventsPage />},
+      {path: 'events/:id', element: <EventDetail />},
+      {path: 'events/new', element: <NewEvent />},
+      {path: 'events/:id/edit', element: <EditEvent />},
+    ],
+  },
 ]);
 
 function App() {
