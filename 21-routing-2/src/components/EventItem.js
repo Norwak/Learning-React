@@ -1,8 +1,15 @@
+import { Link, redirect, useSubmit } from 'react-router-dom';
 import classes from './EventItem.module.css';
 
-function EventItem({ event }) {
+export default function EventItem({ event }) {
+  const submit = useSubmit();
+
   function startDeleteHandler() {
-    // ...
+    const confirmed = window.confirm('Are you sure about that?');
+
+    if (confirmed) {
+      submit(null, {method: 'DELETE'});
+    }
   }
 
   return (
@@ -12,11 +19,23 @@ function EventItem({ event }) {
       <time>{event.date}</time>
       <p>{event.description}</p>
       <menu className={classes.actions}>
-        <a href="edit">Edit</a>
+        <Link to={`/events/${event.id}/edit/`}>Edit</Link>
         <button onClick={startDeleteHandler}>Delete</button>
       </menu>
     </article>
   );
 }
 
-export default EventItem;
+
+
+export async function deleteEventAction({params}) {
+  const response = await fetch(`http://localhost:8080/events/${params.id}/`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    throw json({message: 'Could not delete event.'}, {status: 500});
+  }
+
+  return redirect('/events/');
+}
