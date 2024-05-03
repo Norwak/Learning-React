@@ -3,7 +3,6 @@ import EventsList from '../components/EventsList';
 
 function EventsPage() {
   const data = useLoaderData();
-  const events = data.events;
 
   // if (data.isError) {
   //   return <p>{data.message}</p>;
@@ -11,7 +10,7 @@ function EventsPage() {
 
   return (
     <>
-      <EventsList events={events} />
+      <EventsList events={data.events} />
     </>
   );
 }
@@ -20,11 +19,12 @@ export default EventsPage;
 
 export async function eventsLoader() {
   const response = await fetch('http://localhost:8080/events');
+
   if (!response.ok) {
     // return {isError: true, message: 'Could not fetch events.'};
     // throw new Response(JSON.stringify({message: 'Could not fetch events.'}), {status: 500});
-    return json({message: 'Could not fetch events.'}, {status: 500});
-  } else {
-    return await response.json();
+    throw json({message: 'Could not fetch events.'}, {status: 500});
   }
+
+  return await response.json();
 }
