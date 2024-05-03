@@ -4,12 +4,13 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import EventsPage, { eventsLoader } from "./pages/EventsPage";
 import EventDetail, { eventLoader } from "./pages/EventDetail";
-import NewEvent, { newEventAction } from "./pages/NewEvent";
+import NewEvent from "./pages/NewEvent";
 import EditEvent from "./pages/EditEvent";
 import RootLayout from "./layouts/RootLayout";
 import RootEventLayout from "./layouts/RootEventLayout";
 import ErrorPage from "./pages/ErrorPage";
 import { deleteEventAction } from "./components/EventItem";
+import { eventFormAction } from "./components/EventForm";
 
 // 1. Add five new (dummy) page components (content can be simple <h1> elements)
 //    - HomePage
@@ -45,9 +46,9 @@ const router = createBrowserRouter([
           {index: true, element: <EventsPage />, loader: eventsLoader},
           {path: ':id/', id: 'event-detail', loader: eventLoader, children: [
             {index: true, element: <EventDetail />, action: deleteEventAction},
-            {path: 'edit', element: <EditEvent />},
+            {path: 'edit', element: <EditEvent />, action: eventFormAction},
           ]},
-          {path: 'new', element: <NewEvent />, action: newEventAction},
+          {path: 'new', element: <NewEvent />, action: eventFormAction},
         ],
       },
     ],
