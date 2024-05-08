@@ -1,4 +1,4 @@
-import { Link, redirect, useSubmit } from 'react-router-dom';
+import { Link, json, redirect, useSubmit } from 'react-router-dom';
 import classes from './EventItem.module.css';
 
 export default function EventItem({ event }) {
